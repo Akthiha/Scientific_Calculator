@@ -22,6 +22,10 @@ function Calculator() {
     }
   };
 
+  const handleChange = (e) => {
+    setCalculation(e.target.value);
+  };
+
   const handleSquareRoot = () => {
     setCalculation(`Math.sqrt(${calculation})`);
   };
@@ -52,7 +56,11 @@ function Calculator() {
 
   return (
     <div className="calculator">
-      <input className="input" type="text" value={calculation} disabled />
+      <textarea
+        className="input"
+        value={calculation}
+        onChange={handleChange}
+      />
       <div className="buttons">
         <button onClick={handleClear} className="button clear">
           AC
