@@ -54,6 +54,24 @@ function Calculator() {
     setCalculation(`${Math.E}`);
   };
 
+  const handleTrigonometric = (e) => {
+    const value = e.target.value;
+    const trigonometricFunction = value.slice(0, -1); // remove the opening parenthesis
+    let angle = calculation;
+    if (trigonometricFunction !== "atan") {
+      angle = angle * (Math.PI / 180); // convert degrees to radians
+    }
+  
+    try {
+      const result = eval(`Math.${trigonometricFunction}(${angle})`);
+      setCalculation(result.toString());
+    } catch (error) {
+      setCalculation("Error");
+    }
+  };
+  
+  
+  
   return (
     <div className="calculator">
       <textarea
@@ -118,30 +136,27 @@ function Calculator() {
         </button>
         <button onClick={handleClick} className="button" value="Ans">
           Ans
-        </button>
-        <button onClick={handleClick} className="button" value="sin(">
-            sin
-        </button>    
+        </button>   
         <button onClick={handleClick} className="button" value=".">
           .
         </button>
-        <button onClick={handleClick} className="button" value="sin(">
+        <button onClick={handleTrigonometric} className="button" value="sin(">
           sin
         </button>
-        <button onClick={handleClick} className="button" value="cos(">
+        <button onClick={handleTrigonometric} className="button" value="cos(">
           cos
         </button>
-        <button onClick={handleClick} className="button" value="tan(">
+        <button onClick={handleTrigonometric} className="button" value="tan(">
           tan
         </button>
-        <button onClick={handleClick} className="button" value="ln(">
+        <button onClick={handleNaturalLog} className="button" value="ln(">
           ln
         </button>
-        <button onClick={handleClick} className="button" value="log(">
+        <button onClick={handleLog} className="button" value="log(">
           log
         </button>
-        <button onClick={handleClick} className="button" value="e^(">
-          e^x
+        <button onClick={handleE} className="button" value="e^(">
+          e
         </button>
         <button onClick={handleSquareRoot} className="button" value="sqrt(">
           √
