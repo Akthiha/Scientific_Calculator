@@ -125,9 +125,6 @@ function Calculator() {
         <button onClick={handleClick} className="button" value=".">
           .
         </button>
-        <button onClick={handleClick} className="button" value="Ans">
-          Ans
-        </button>
         <button onClick={handleClick} className="button" value="sin(">
           sin
         </button>
