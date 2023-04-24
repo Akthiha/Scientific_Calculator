@@ -74,6 +74,7 @@ function Calculator() {
     }
   };
 
+// Later to add some more features
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleCalculate();
