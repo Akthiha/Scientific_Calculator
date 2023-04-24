@@ -23,7 +23,11 @@ function Calculator() {
   };
 
   const handleChange = (e) => {
-    setCalculation(e.target.value);
+    if (e.key === "Enter") {
+      handleCalculate();
+    } else {
+      setCalculation(e.target.value);
+    }
   };
 
   const handleSquareRoot = () => {
@@ -69,8 +73,12 @@ function Calculator() {
       setCalculation("Error");
     }
   };
-  
-  
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleCalculate();
+    }
+  };
   
   return (
     <div className="calculator">
@@ -78,6 +86,7 @@ function Calculator() {
         className="input"
         value={calculation}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
       />
       <div className="buttons">
         <button onClick={handleClear} className="button clear">
@@ -166,6 +175,9 @@ function Calculator() {
         </button>
         <button onClick={handleClick} className="button" value="%">
           %
+        </button>
+        <button onClick={handlePi} className="button" value={Math.PI.toString()}>
+          π
         </button>
         <button onClick={handleCalculate} className="button equal" value="=">
           =
